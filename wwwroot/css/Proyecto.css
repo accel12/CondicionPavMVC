@@ -1,0 +1,54 @@
+﻿body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-width:800px;
+}
+
+.btn{
+    
+}
+.contenido {
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+    isolation: isolate;
+}
+
+.contenido::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    z-index: -1;
+    opacity: .5;
+}
+
+.contenedorProyectos {
+    background-color: #003554;
+    max-width:800px;
+    height:100%;
+    border-radius:30px;
+    color:white;
+}
+
+.contenedor {
+    padding:30px
+}
+
+.titulo {
+    border-start-start-radius: 30px !important;
+    border-start-end-radius: 30px !important;
+    background-color: #006494;
+}
+
+.titulo p{
+    font-size:30px;
+    font-weight:bold;
+    text-decoration-line:underline;
+}

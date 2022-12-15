@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Evalpav</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="~/css/Proyecto.css" />
+</head>
+<body>
+	<div class="contenido">
+		<div class="h-100 contenedor">
+			<div class="card contenedorProyectos">
+				<div class="card-header text-center titulo">
+					<p>PROYECTOS EVALUADOS</p>
+				</div>
+				<div class="card-body text-center">
+					<div>
+						@for(var i=0; i<3; i++)
+						{
+							<div>
+								Proyecto
+							</div>
+						}
+					</div>
+					<div>
+						<p>No tienes proyectos creados</p>
+						<button class="btn btn-primary">Crear Proyecto</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
+
