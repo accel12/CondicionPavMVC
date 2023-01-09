@@ -12,6 +12,4 @@ public partial class Carrile
     public string Pavimento { get; set; } = null!;
 
     public int ProyectoId { get; set; }
-
-    public virtual Proyecto Proyecto { get; set; } = null!;
 }

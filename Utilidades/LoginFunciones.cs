@@ -3,7 +3,7 @@ using CondicionPavMVC.Models;
 
 namespace CondicionPavMVC.Utilidades
 {
-	public class LoginFunciones
+    public class LoginFunciones
 	{
 		private string usuario;
 		private string clave;
@@ -19,7 +19,7 @@ namespace CondicionPavMVC.Utilidades
 			LoginUser loginUser = new LoginUser();
 			loginUser.Usuario=this.usuario;
 			loginUser.Clave=this.clave;
-			Usuario resultado = Consultas.Consultas.validarCredenciales(loginUser) ;
+			Usuario resultado = Consultas.Consulta.validarCredenciales(loginUser) ;
 			return resultado;
 		}
 	}

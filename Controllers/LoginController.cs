@@ -1,12 +1,23 @@
 ﻿using CondicionPavMVC.Models;
 using CondicionPavMVC.Utilidades;
+using CondicionPavMVC.Permisos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System.Web;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CondicionPavMVC.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Index()
+		private readonly IMemoryCache _memoryCache;
+
+        public LoginController(IMemoryCache memoryCache)
+        {
+            _memoryCache = memoryCache;
+        }
+		public IActionResult Index()
         {
             return View();
         }
@@ -14,12 +25,24 @@ namespace CondicionPavMVC.Controllers
         [HttpPost]
         public IActionResult Index(LoginUser oLoginUser)
         {
-            LoginFunciones login = new LoginFunciones(oLoginUser);
+            
+		    LoginFunciones login = new LoginFunciones(oLoginUser);
             Usuario usuarioCompleto = login.VerificarUsuario();
-            if(usuarioCompleto != null)
-            {
+            LoginUser usuarioGuardar = new LoginUser();
 
-                //Session["usuario"]=
+			if (usuarioCompleto != null)
+            {
+                usuarioGuardar.Id = usuarioCompleto.UserId;
+                usuarioGuardar.Nombres = usuarioCompleto.Nombres;
+                usuarioGuardar.Apellidos = usuarioCompleto.Apellidos;
+                usuarioGuardar.Proyectos = usuarioCompleto.Proyectos;
+    //            CookieOptions cookies = new CookieOptions();
+    //            string usuarioSerializado = JsonConvert.SerializeObject(usuarioGuardar);
+                
+				//Response.Cookies.Append("usuario", JsonConvert.SerializeObject(usuarioGuardar),cookies);
+
+                _memoryCache.Set<LoginUser>("usuario", usuarioGuardar);
+
                 return RedirectToAction("Ver", "Proyecto");
 
 			}

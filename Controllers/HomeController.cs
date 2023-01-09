@@ -1,10 +1,11 @@
 ﻿using CondicionPavMVC.Models;
+using CondicionPavMVC.Permisos;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace CondicionPavMVC.Controllers
 {
-    public class HomeController : Controller
+	public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 

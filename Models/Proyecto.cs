@@ -11,11 +11,7 @@ public partial class Proyecto
 
     public string Tramo { get; set; } = null!;
 
-    public int CarrilId { get; set; }
-
     public int UsuarioId { get; set; }
-
-    public virtual ICollection<Carrile> Carriles { get; } = new List<Carrile>();
 
     public virtual Usuario Usuario { get; set; } = null!;
 }

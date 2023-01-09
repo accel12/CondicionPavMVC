@@ -1,3 +1,6 @@
+using CondicionPavMVC.Controllers;
+using CondicionPavMVC.Permisos;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,7 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
     .AddRazorRuntimeCompilation();
 
-//builder.Services.AddSession[]
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

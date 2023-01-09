@@ -22,14 +22,10 @@ public partial class CondicionPavDbContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var builder = WebApplication.CreateBuilder();
-        WebApplication app = builder.Build();
-        var connectionString = app.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection");
-        optionsBuilder.UseSqlServer(connectionString);
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("workstation id=CondicionPavDB.mssql.somee.com;packet size=4096;user id=StanBMTH_SQLLogin_1;pwd=spkp4cyrue;data source=CondicionPavDB.mssql.somee.com;persist security info=False;initial catalog=CondicionPavDB; TrustServerCertificate=True");
 
-	protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.UseCollation("Modern_Spanish_CI_AS");
 
@@ -47,17 +43,11 @@ public partial class CondicionPavDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("tipoCarril");
-
-            entity.HasOne(d => d.Proyecto).WithMany(p => p.Carriles)
-                .HasForeignKey(d => d.ProyectoId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Carriles_Carriles");
         });
 
         modelBuilder.Entity<Proyecto>(entity =>
         {
             entity.Property(e => e.ProyectoId).HasColumnName("proyectoID");
-            entity.Property(e => e.CarrilId).HasColumnName("carrilID");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .IsUnicode(false)
